@@ -1,12 +1,12 @@
-# Commercial License — Overdue Bookmarks — Split Pane Bookmark Manager
+# Commercial License — Overdue Bookmark Manager
 
-Copyright (c) 2025 Overdue Bookmarks — Split Pane Bookmark Manager. All rights reserved.
+Copyright (c) 2025 Overdue Bookmark Manager. All rights reserved.
 
 ---
 
 ## 1. Definitions
 
-**"Software"** refers to Overdue Bookmarks — Split Pane Bookmark Manager, including all source code, assets, and documentation in this repository.
+**"Software"** refers to Overdue Bookmark Manager, including all source code, assets, and documentation in this repository.
 
 **"Author"** refers to the original creator and copyright holder of the Software, reachable at overduebookmarks@gmail.com.
 
