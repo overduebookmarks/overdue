@@ -11,6 +11,8 @@ A dual-pane bookmark manager extension for Firefox and Chrome that brings a file
 ### Dual-Pane Layout
 Work with two independent bookmark panels side by side — browse, compare, and organize without losing your place. Each pane has its own folder tree and bookmark list.
 
+All panel and tree widths are fully adjustable — drag the splitter between the two panes to resize them, and drag the divider between the folder tree and bookmark list within each pane to tune your layout.
+
 ### Folder Tree Navigation
 - Collapsible folder tree with depth-indented hierarchy
 - Folder filter search to quickly jump to any folder
@@ -26,7 +28,7 @@ Work with two independent bookmark panels side by side — browse, compare, and 
 
 ### Move & Organize
 - **Drag and drop** bookmarks and folders within or between panels
-- **Move popup button** on the panel divider for quick one-click transfer
+- **Move popup button** on the panel divider for quick one-click transfer — the arrow direction automatically follows the active panel so you always know where items will land
 - Cut / Copy / Paste support (Ctrl+X / Ctrl+C / Ctrl+V)
 - Move selected items to the opposite panel via toolbar or context menu
 - **Undo / Redo** (Ctrl+Z / Ctrl+Y)
@@ -53,19 +55,24 @@ Work with two independent bookmark panels side by side — browse, compare, and 
 | Delete | — | Delete selected items |
 
 ### Context Menu
-Right-click on any bookmark or folder for quick access to:
+Right-click on any bookmark for quick access to:
 - Open in New Tab / Background Tab
 - Show Containing Folder in Left or Right Panel
 - Move to Other Panel
-- Cut, Copy URL, Paste, Rename, Delete
+- Cut, Copy URL, Rename, Delete
 - Add New Folder
-- Select All (on empty area)
+
+Right-click on an empty area of the bookmark list:
+- Paste
+- Add New Folder
+- Select All
 
 For folders specifically:
 - Open All Links in Tabs / Background Tabs
 - Open in Other Panel
 - Move Folder to Right Panel
 - Cut, Copy, Paste, Rename, Delete
+- Add New Folder
 
 ### Status Bar
 Displays the selected bookmark's **name**, **folder path**, and **URL** at the bottom. Click the name directly in the status bar to rename inline.
@@ -108,6 +115,8 @@ No data is collected or transmitted. Everything runs locally in your browser.
 ---
 
 ## Support
+
+The **ⓘ** button on the right side of the status bar opens the About panel, where you can find version info and support links.
 
 If Overdue Bookmarks is saving you time, you can support the project:
 
