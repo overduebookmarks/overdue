@@ -1,11 +1,11 @@
 @ -1,150 +0,0 @@
 # Overdue Bookmarks  Manager
-
 > *"Organizing what you should have read yesterday."*
 
 > Once GitHub Sponsors is approved, the sponsorship link will be added to the Firefox and Chrome Web Store listings. Details will be shared then.
 
-A split pane bookmark manager extension for Firefox and Chrome that brings a file-manager feel to your browser bookmarks.
+ Supporting this project helps keep the Bookmark Manager extension for Firefox and Chrome free and open source.
+ 
 
 ---
 
