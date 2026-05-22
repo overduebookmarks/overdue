@@ -2,7 +2,7 @@
 # Overdue Bookmark  Manager
 > *"Organizing what you should have read yesterday."*
 
-> As soon as GitHub Sponsors is approved, the extension will be submitted to the Firefox and Chrome Web Store listings. Supporting this project helps keep the Bookmark Manager extension for Firefox and Chrome free and open source.
+> As soon as GitHub Sponsors is approved, the extension will be submitted to the Firefox and Chrome Web Store listings with the given link. Supporting this project helps keep the Bookmark Manager extension for Firefox and Chrome free and open source.
  
 
 ---
