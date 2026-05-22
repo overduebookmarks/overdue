@@ -1,8 +1,8 @@
-# Overdue Bookmarks
+# Overdue Bookmarks — Split Pane Bookmark Manager
 
 > *"Organizing what you should have read yesterday."*
 
-A dual-pane bookmark manager extension for Firefox and Chrome that brings a file-manager feel to your browser bookmarks.
+A split pane bookmark manager extension for Firefox and Chrome that brings a file-manager feel to your browser bookmarks.
 
 ---
 
@@ -77,6 +77,8 @@ For folders specifically:
 ### Status Bar
 Displays the selected bookmark's **name**, **folder path**, and **URL** at the bottom. Click the name directly in the status bar to rename inline.
 
+The **ⓘ** button on the right side of the status bar opens the About panel, where you can find version info and support links.
+
 ### Keyboard Navigation
 Full keyboard support — navigate the folder tree and bookmark list using arrow keys, with visible focus indicators.
 
@@ -116,9 +118,7 @@ No data is collected or transmitted. Everything runs locally in your browser.
 
 ## Support
 
-The **ⓘ** button on the right side of the status bar opens the About panel, where you can find version info and support links.
-
-If Overdue Bookmarks is saving you time, you can support the project:
+If Overdue Bookmarks — Split Pane Bookmark Manager is saving you time, you can support the project:
 
 - ☕ [Buy Me a Coffee](https://www.buymeacoffee.com) (*****fill this space*****)
 - 💙 [PayPal Donate](https://www.paypal.com/donate)  (*****fill this space*****)
