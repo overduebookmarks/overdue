@@ -41,9 +41,7 @@ No data is collected or transmitted. Everything runs locally in your browser.
 
 If Overdue Bookmarks — Split Pane Bookmark Manager is saving you time, you can support the project:
 
-- ☕ [Buy Me a Coffee](https://www.buymeacoffee.com) (*****will fill this space*****)
-- 💙 [PayPal Donate](https://www.paypal.com/donate) (*****will fill this space*****)
-- 💚 [GitHub Sponsors](https://github.com/sponsors/overduebookmarks) (*****will fill this space*****)
+- 💙 [GitHub Sponsors](https://github.com/sponsors/overduebookmarks)
 
 It helps keep the project alive.
 
