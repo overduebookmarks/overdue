@@ -39,7 +39,7 @@ No data is collected or transmitted. Everything runs locally in your browser.
 
 ## Support
 
-If Overdue Bookmarks — Split Pane Bookmark Manager is saving you time, you can support the project:
+If Overdue Bookmarks is saving you time, you can support the project:
 
 - 💙 [GitHub Sponsors](https://github.com/sponsors/overduebookmarks)
 
