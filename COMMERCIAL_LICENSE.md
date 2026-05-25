@@ -1,45 +1,41 @@
-# Commercial License — Overdue Bookmark Manager
+# Custom Non-Commercial License (CNCL) v1.0
 
-Copyright (c) 2025 Overdue Bookmark Manager. All rights reserved.
+Overdue Bookmarks
+Copyright (c) 2026 Umit KURSUN
+
+All rights reserved.
 
 ---
 
-## 1. Definitions
-
-**"Software"** refers to Overdue Bookmark Manager, including all source code, assets, and documentation in this repository.
+**"Software"** refers to Overdue Bookmarks, including all source code, assets, and documentation in this repository.
 
 **"Author"** refers to the original creator and copyright holder of the Software, reachable at overduebookmarks@gmail.com.
 
-**"Commercial Use"** means any use of the Software — in original or modified form — that is intended for or results in financial gain, including but not limited to:
-
-- Selling or sublicensing the Software or a derivative of it
-- Bundling the Software into a paid product or service
-- Offering the Software as part of a subscription or SaaS product
-- Monetizing the Software through advertisements or sponsorships
-- Using the Software internally within an organization to support revenue-generating activities
+Permission is hereby granted to any person obtaining a copy of this software and associated documentation files (the "Software") to use, copy, modify, and distribute the Software for personal, educational, research, and other non-commercial purposes, subject to the following conditions:
 
 ---
 
-## 2. Free Use (AGPLv3)
-
-Personal, educational, and non-commercial open source use is governed by the **GNU Affero General Public License v3.0 (AGPLv3)**. A copy is available at:
-https://www.gnu.org/licenses/agpl-3.0.html
-
-Under AGPLv3, any modified or derivative version of the Software must also be released under AGPLv3 with full source code publicly available.
+** 1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. ** 
 
 ---
 
-## 3. Commercial Use Requires a License
+** 2. Commercial use of the Software is prohibited without prior written permission from the copyright holder. **
 
-**Any Commercial Use of this Software is strictly prohibited without a separate written commercial license agreement signed by the Author.**
+For the purposes of this license, "Commercial use" includes, but is not limited to:
 
-Attempting to commercialize this Software without such an agreement is a violation of the Author's exclusive rights under copyright law.
+- Selling or sublicensing the Software
+- Bundling the Software into paid products or services
+- Offering the Software as part of a subscription or SaaS platform
+- Monetizing the Software through advertisements, sponsorships, or paid access
+- Using the Software in connection with a commercial product or revenue-generating activity
 
 ---
 
-## 4. Obtaining a Commercial License
+** 3. Any modified versions or derivative works of the Software distributed by third parties must also remain under this license. **
 
-To request a commercial license, contact the Author:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For commercial licensing inquiries, contact:
 
 📧 [overduebookmarks@gmail.com](mailto:overduebookmarks@gmail.com)
 
@@ -47,16 +43,6 @@ Please describe your intended use case. Commercial licenses are granted at the A
 
 ---
 
-## 5. No Implied Rights
-
-Nothing in the AGPLv3 license or anywhere else in this repository grants any right to use the Software for Commercial Use. The AGPLv3 license and this Commercial License are complementary: the AGPLv3 governs free use, and this document governs all Commercial Use.
+** 4. Violation of these terms may result in legal action under applicable copyright law. The Author reserves all rights not expressly granted. **
 
 ---
-
-## 6. Enforcement
-
-Violation of these terms may result in legal action under applicable copyright law. The Author reserves all rights not expressly granted.
-
----
-
-*Last updated: 2025*

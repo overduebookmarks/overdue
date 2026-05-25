@@ -1,25 +1,131 @@
-@ -1,150 +0,0 @@
-# Overdue Bookmark  Manager
-> *"Organizing what you should have read yesterday."*
+# Overdue Bookmarks
 
-Thank you for supporting my very first open source project.
+
+> *"The split pane bookmark manager that was long overdue."*
+
+A split pane bookmark manager extension that brings a file-manager feel to your browser bookmarks.
 
 ---
 
 ## Features
 
-###  Layout
-###  Navigation
+### Split Pane / Dual Pane Layout
+Two independent panels sit side by side, each with its own folder tree and bookmark list. Browse one panel while the other holds your destination — no need to navigate back and forth.
+
+All panel and tree widths are fully adjustable — drag the splitter between the two panes to resize them, and drag the divider between the folder tree and bookmark list within each pane to tune your layout.
+
+### Folder Tree Navigation
+- Filter folders to quickly find and open any folder
+- Collapsible folder tree with depth-indented hierarchy
+- Each folder displays a count badge showing the total number of bookmarks it contains, including all subfolders recursively (URLs only)
+- Back / Forward / Up to Parent navigation buttons
+
 ### Bookmark List
+- Sortable columns: **Name**, **Path**, **URL**, **Date Added** 
+- Sorting is for browsing only — it does not affect the original order in the browser
+- Resizable columns and panels via drag handles — all fully collapsible
+- Virtual scrolling for smooth performance with large bookmark collections
+
+### Searching
+- Search bar with live filtering and highlighted matches
+- **Path** column appears automatically in search mode, allowing users to sort bookmarks by containing folders.
+
 ### Move & Organize
-### Actions
-### Menu
+- Move selected items to the opposite panel via drag and drop, toolbar, context menu or popup buttons
+- Move popup buttons appearing on the panel divider for quick one-click transfer — two independent arrow buttons, each enabled only when its source panel has a selection. The buttons can be freely repositioned by dragging.
+- Cross-panel selection is preserved when switching panels — selections in both panes can coexist, making it easy to pick a source in one panel and a destination in the other before moving
+- Cut / Copy / Paste support (Ctrl+X / Ctrl+C / Ctrl+V)
+
+- **Undo / Redo** (Ctrl+Z / Ctrl+Y)
+
+### Toolbar Actions
+| Button | Shortcut | Description |
+|---|---|---|
+| Back | Alt+← | Go to previous folder |
+| Forward | Alt+→ | Go to next folder |
+| Up | Alt+↑ | Navigate to parent folder |
+| Undo | Ctrl+Z | Undo last action |
+| Redo | Ctrl+Y | Redo last undone action |
+| Move Left → Right | F6 | Move left panel selection to right panel |
+| Move Right → Left | F7 | Move right panel selection to left panel |
+| Open in Opposite Panel | — | Open selected folder in other panel |
+| Show Containing Folder (Left) | — | Reveal parent folder in left panel |
+| Show Containing Folder (Right) | — | Reveal parent folder in right panel |
+| Cut | Ctrl+X | Cut selected items |
+| Copy URL | Ctrl+C | Copy URL to clipboard |
+| Paste | Ctrl+V | Paste cut items |
+| Select All | Ctrl+A | Select all items in active panel |
+| New Folder | — | Create a new subfolder |
+| Rename | — | Rename selected item |
+| Open All in Tabs | — | Open all bookmarks in folder as tabs |
+| Delete | — | Delete selected items |
+
+### Context Menu
+Right-click on any bookmark for quick access to:
+- Open in New Tab / Background Tab
+- Show Containing Folder in Left or Right Panel
+- Move to Other Panel
+- Cut, Copy URL, Rename, Delete
+- Add New Folder
+
+Right-click on an empty area of the bookmark list:
+- Paste
+- Add New Folder
+- Select All
+
+For folders specifically:
+- Open All Links in Tabs / Background Tabs
+- Open in Other Panel
+- Move Folder to Right Panel
+- Cut, Copy, Paste, Rename, Delete
+- Add New Folder
+
 ### Status Bar
-### Keyboard Navigation
+Displays the selected bookmark's **name**, **folder path**, and **URL** at the bottom. Click the name directly in the status bar to rename inline.
+
+The app logo on the right side of the status bar opens the About panel, where you can find version info and support links.
+
+### Keyboard Navigation and Shortcuts
+Full keyboard support — navigate the folder tree and bookmark list using arrow keys, with visible focus indicators.
+| Button | Shortcut | Description |
+|---|---|---|
+| Back | Alt+← | Go to previous folder |
+| Copy URL | Ctrl+C | Copy URL to clipboard |
+| Cut | Ctrl+X | Cut selected items |
+| Delete | Delete | Delete selected items |
+| Escape | Esc | Clear selection / close search / close context menu |
+| Forward | Alt+→ | Go to next folder |
+| Move Left → Right | F6 | Move left panel selection to right panel |
+| Move Right → Left | F7 | Move right panel selection to left panel |
+| New Folder | — | Create a new subfolder |
+| Open All in Tabs | — | Open all bookmarks in folder as tabs |
+| Open bookmark | Enter | Open selected bookmark |
+| Open in background tab | Ctrl+Enter | Open bookmark in background tab |
+| Open in new window | Shift+Enter | Open bookmark in new window |
+| Open in Opposite Panel | — | Open selected folder in other panel |
+| Paste | Ctrl+V | Paste cut items |
+| Redo | Ctrl+Y / Ctrl+Shift+Z | Redo last undone action |
+| Rename | F2 | Rename selected item |
+| Search | Ctrl+F / F3 | Focus bookmark search in active panel |
+| Select All | Ctrl+A | Select all items in active panel |
+| Show Containing Folder (Left) | — | Reveal parent folder in left panel |
+| Show Containing Folder (Right) | — | Reveal parent folder in right panel |
+| Tree Search | Ctrl+B / Shift+F3 | Focus folder tree search in active panel |
+| Undo | Ctrl+Z | Undo last action |
+| Up | Alt+↑ | Navigate to parent folder |
+| Up (alternative) | Backspace | Navigate to parent folder |
+
+
 ### Theming
-## Installation
-### Chrome
-### Firefox
+Automatically adapts to your system's **light or dark mode** preference via `prefers-color-scheme`.
+
+
+## Browser Compatibility
+
+Compatible with Firefox, Chrome, Edge, and Opera.
+
+---
+
 ## Permissions
 
 This extension requires the following browser permissions:
@@ -39,11 +145,9 @@ No data is collected or transmitted. Everything runs locally in your browser.
 
 ## Support
 
-If Overdue Bookmarks is saving you time, you can support the project:
+If Overdue Bookmarks is saving you time, consider supporting the project:
 
-- 💙 [GitHub Sponsors](https://github.com/sponsors/overduebookmarks)
-
-It helps keep the project alive.
+- 💙 [GitHub Sponsors] https://github.com/sponsors/overduebookmarks 
 
 ---
 

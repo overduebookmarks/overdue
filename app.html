@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Overdue Bookmarks</title>
+  <style>
+:root {
+  --bg: #1e1e1e;
+  --bg-dark: #121212;
+  --header-bg: #252525;
+  --text: #e6e6e6;
+  --border: #2f2f2f;
+
+  --accent: #4c8ed9;
+  --selected: #264f78;
+
+  --line: rgba(255,255,255,0.06);
+  --hover-gray: rgba(255,255,255,0.10);
+
+  --input-bg: #2a2a2a;
+
+  --tree-bg: #161616;
+  --results-bg: #111111;
+  --statusbar-bg: #181818;
+  --tooltip-bg: #2b2b2b;
+  --hl-bg: rgba(210, 180, 40, 0.45);
+  --hl-color: #f0d060;
+  
+  --mini-bar-color: rgba(255,255,255,0.65);
+  --mini-bar-border: rgba(255,255,255,0.18);
+  --badge-bg: rgba(255,255,255,0.08);
+  --badge-color: rgba(255,255,255,0.60);
+
+  --menu-bg: #252525;
+  --menu-border: #3a3a3a;
+  --menu-text: #eee;
+  --menu-hover-bg: #264f78;
+  --menu-hover-text: #fff;
+  --menu-danger-hover-bg: #a80000;
+  --menu-disabled-text: #666;
+  --menu-separator: #444;
+  --menu-shadow: rgba(0,0,0,0.5);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f0f0f0;
+    --bg-dark: #e0e0e0;
+    --header-bg: #d4d4d4;
+    --text: #1a1a1a;
+    --border: #c8c8c8;
+
+    --accent: #2563ab;
+    --selected: #c5d9f0;
+
+    --line: rgba(0,0,0,0.07);
+    --hover-gray: rgba(0,0,0,0.06);
+
+    --input-bg: rgba(0,0,0,0.06);
+
+    --tree-bg: #e0e0e0;
+    --results-bg: #f0f0f0;
+    --statusbar-bg: #e0e0e0;
+    --tooltip-bg: #d4d4d4;
+
+    --hl-bg: rgba(255, 210, 0, 0.80);
+    --hl-color: #1a1200;
+
+    --cmd-btn-text: #333;
+    --cmd-btn-bg: #e0e0e0;
+    --cmd-btn-border: #c4c4c4;
+    --cmd-btn-hover: #d0d0d0;
+    --cmd-btn-text-hover: #111;
+
+    --actions-bg: rgba(224,224,224,.97);
+    --stat-url-color: #777;
+
+    --mini-bar-color: rgba(0,0,0,0.55);
+    --mini-bar-border: rgba(0,0,0,0.15);
+    --badge-bg: rgba(0,0,0,0.20);
+    --badge-color: rgba(0,0,0,0.82);
+
+    --menu-bg: #f5f5f5;
+    --menu-border: #c8c8c8;
+    --menu-text: #1a1a1a;
+    --menu-hover-bg: #2563ab;
+    --menu-hover-text: #fff;
+    --menu-danger-hover-bg: #c0392b;
+    --menu-disabled-text: #aaa;
+    --menu-separator: #d0d0d0;
+    --menu-shadow: rgba(0,0,0,0.15);
+
+  .pane {
+    border-color: #d1e2f1
+  }
+
+  .pane.active-pane {
+    border-color: #334155 !important; 
+    box-shadow: 0 0 0 2px rgba(37,99,171,.2);
+  }
+
+  .row.selected.cut-pending {
+    background: #a8c4e0 !important;
+    color: rgba(0,0,0,0.4) !important;
+  }
+  
+  }
+
+#stat-path {
+  color: #555 !important;
+}
+
+.active-pane .folder-row.selected .folder-count-badge {
+  background: rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.95);
+}
+
+.active-pane .row.selected .folder-count-badge,
+.active-pane .folder-row.selected .folder-count-badge {
+  background: rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.95);
+}
+
+  #actions {
+    background: rgba(220,220,220,.95);
+    border-color: #bebebe;
+  }
+
+  #status-bar {
+    border-top-color: #c4c4c4;
+  }
+ 
+.pane:not(.active-pane) .row.selected,
+.pane:not(.active-pane) .folder-row.selected {
+  background-color:  #d5d5d5  !important;
+  color: #333 !important;
+}
+
+  .active-pane .row.selected,
+  .active-pane .folder-row.selected {
+    background-color: #c5d9f0 !important;
+    color: #0a3060 !important;
+  }
+
+  .row.selected,
+  .folder-row.selected {
+    background-color: #d8d8d8 !important;
+    color: #333 !important;
+  }
+
+  .folder-row::before,
+  .folder-row::after {
+    background: rgba(0,0,0,0.12);
+  }
+
+  .kb-focus,
+  .row.kb-focus,
+  .folder-row.kb-focus {
+    outline-color: #2563ab !important;
+  }
+
+  #stat-right { color: #555; }
+
+  #context-menu { box-shadow: 0 4px 16px var(--menu-shadow); }
+  .menu-item:hover { background: var(--menu-hover-bg); color: var(--menu-hover-text); }
+
+  #about-overlay { background: rgba(0,0,0,0.25); }
+  #close-about { color: #888; }
+
+  #about-card {
+    background: #ffffff;
+    border-color: #d0d0d0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    color: #1a1a1a;
+  }
+
+  #about-card .about-donate-box {
+    background: linear-gradient(135deg, rgba(37,99,171,0.08) 0%, rgba(37,99,171,0.06) 100%);
+    border-color: rgba(37,99,171,0.22);
+  }
+
+.tb-btn .tb-tooltip {
+  background: #2b2b2b;
+  color: #e6e6e6;
+  border-color: #444;
+}
+
+}
+
+.tb-tooltip {
+  background: #3a3a3a !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
+}
+
+#donate-gh:hover {
+  opacity: .82;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  font-size: 12px;
+}
+
+#workspace {
+  display: grid;
+  grid-template-columns:
+    minmax(0px, var(--left-pane, 1fr))
+    6px
+    minmax(0px, var(--right-pane, 1fr));
+  gap: 0;
+  height: calc(100vh - 98px);
+  padding: 10px;
+}
+
+.pane {
+  display: grid;
+  grid-template-columns:
+    minmax(0, var(--tree-width, 200px))
+    6px
+    var(--results-width, 1fr);
+  min-width: 0px;
+  padding: 0px;
+  padding-bottom: 0px;  
+    padding-right: 1;
+  overflow: hidden;
+  border: 1px solid #2f2f2f;
+  border-radius: 12px;
+  background: var(--bg-dark);
+}
+
+.pane.active-pane {
+  border-color: #7a7a7a;
+  box-shadow: 0 0 0 1px rgba(77,163,255,.22);
+}
+
+.tree-panel,
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+    overflow: hidden;
+}
+
+.tree-panel {
+  border-right: 1px solid var(--border);
+  background: var(--tree-bg, #161616);
+   overflow-x: auto; 
+}
+
+.results-panel {
+  background: var(--results-bg, #111111);
+}
+
+#tree-left,
+#tree-right,
+.results-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  min-height: 0;
+  position: relative;
+}
+
+.item-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:14px;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+
+#actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px;
+
+  background: var(--actions-bg, rgba(20,20,20,.92));
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  backdrop-filter: blur(6px);
+}
+
+#actions button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #777;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#actions button:hover {
+  background: var(--hover-gray);
+  color: #fff;
+}
+
+.table-header,
+.row {
+  border-bottom: 1px solid var(--line);
+}
+
+.tree-header,
+.search-area {
+  height: 40px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+input {
+  width: 100%;
+  height: 28px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 30px 7px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  display: none;
+  font-size: 14px;
+}
+
+.search-wrapper input:not(:placeholder-shown) + .clear-btn {
+  display: block;
+}
+
+.clear-btn:hover {
+  color: var(--accent);
+}
+
+.row,
+.table-header {
+    left: 0;
+    right: 0;
+    height: 28px;
+    display: grid;
+    grid-template-columns:
+      var(--col-name, 240px)
+      1fr
+      85px;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+.search-mode .row,
+.search-mode .table-header {
+  grid-template-columns:
+    var(--col-name, 240px)
+    var(--col-path, 180px)
+    1fr
+    85px;
+}
+
+.cell.path,
+.sort-col.path-col {
+  display: none;
+}
+
+.search-mode .cell.path,
+.search-mode .sort-col.path-col {
+  display: block;
+}
+
+.row > *,
+.table-header > * {
+    min-width: 0;
+}
+
+.cell {
+    min-width: 0;
+
+    padding: 0 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border-right: 1px solid var(--line);
+}
+
+.cell.path,
+.cell.url {
+    text-overflow: clip;
+}
+
+.cell.title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cell.title .item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.cell.date {
+  text-align: right;
+}
+
+.sort-col {
+  position: relative;
+
+  min-width: 0;
+  overflow: hidden;
+
+  padding: 0 10px;
+
+  border-right: 1px solid var(--border);
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.sort-col:hover {
+  background: var(--hover-gray);
+  color: #fff;
+    white-space: nowrap;
+}
+
+.sort-icon {
+  font-size: 10px;
+  margin-left: 5px;
+  font-family: monospace;
+}
+
+.row:hover:not(.selected) {
+  background: rgba(255,255,255,0.08);
+}
+
+#stat-right {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+#stat-right:hover {
+  opacity: 1;
+}
+
+.stat-line {
+  display: flex;
+  align-items: center;
+}
+
+.folder-wrapper {
+  margin-left: 14px;
+}
+
+.folder-wrapper.open > .folder-children {
+  display: block;;
+}
+
+.folder-row {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  align-items: center;
+
+  height: 28px;
+  width: 100%;
+  min-width: max-content;
+
+  padding: 5px 8px;
+  padding-left: calc(var(--depth, 0) * 16px);
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.folder-row:hover:not(.selected) {
+  background: rgba(255,255,255,0.08);
+}
+
+.folder-row::before {
+  content: "";
+
+  position: absolute;
+
+  left: calc(var(--depth, 0) * 16px);
+  top: 0;
+  bottom: 0;
+
+  width: 1px;
+
+  background: rgba(255,255,255,0.08);
+}
+
+.folder-row::after {
+  content: "";
+
+  position: absolute;
+
+  left: calc(var(--depth, 0) * 16px);
+  top: 50%;
+
+  width: 10px;
+  height: 1px;
+
+  background: rgba(255,255,255,0.08);
+}
+
+.tree-row-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.folder-count-badge {
+  justify-self: end;
+  flex-shrink: 0;
+  min-width: 22px;
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 5px;
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  letter-spacing: 0.01em;
+}
+
+.row .folder-count-badge {
+  margin-left: 6px;
+}
+
+.tree-arrow,
+.toggle-indicator {
+  width: 14px;
+  text-align: center;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.selected,
+.row.selected,
+.folder-row.selected {
+  background: #31689e !important;
+  color: #fff !important;
+}
+
+.row.selected.cut-pending,
+.active-pane .row.selected.cut-pending,
+.pane:not(.active-pane) .row.selected.cut-pending {
+  background: #1e4a6e !important;
+  color: rgba(255,255,255,0.45) !important;
+}
+
+.pane:not(.active-pane) .selected {
+  background: #3c3c3c !important;
+  color: #d0d0d0 !important;
+}
+
+.kb-focus,
+.row.kb-focus,
+.folder-row.kb-focus {
+  outline: 1px solid #6cb6ff !important;
+  outline-offset: -1px;
+
+  position: relative;
+  z-index: 20;
+}
+
+.folder-row:focus,
+.row:focus {
+  outline: none;
+}
+
+.pane-mini-bar {
+  flex-shrink: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  font-size: 11px;
+  color: var(--mini-bar-color);
+  border-top: 1px solid var(--mini-bar-border);
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+}
+
+#results-list-left,
+#results-list-right {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  min-width: 0;
+}
+
+.results-content {
+  overflow: auto;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  scrollbar-gutter: stable;
+  min-width: 0;
+}
+
+.virtual-container {
+  position: relative;
+  width: 100%;
+}
+
+.spacer {
+  width: 1px;
+  pointer-events: none;
+}
+
+.visible-items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+#about-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1000;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.7);
+
+  backdrop-filter: blur(4px);
+}
+
+#about-card {
+  position: relative;
+
+  width: 360px;
+  padding: 25px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#close-about {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  cursor: pointer;
+
+  color: var(--menu-disabled-text);
+  font-size: 16px;
+}
+
+#context-menu {
+  position: fixed;
+  z-index: 999999;
+
+  display: none;
+
+  min-width: 180px;
+  padding: 4px 0;
+
+  background: var(--menu-bg);
+
+  border: 1px solid var(--menu-border);
+  border-radius: 4px;
+
+  box-shadow: 0 5px 20px var(--menu-shadow);
+
+  animation: fadeIn 0.08s ease;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+
+  padding: 6px 15px;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  color: var(--menu-text);
+}
+
+.menu-item:hover {
+  background: var(--menu-hover-bg);
+  color: var(--menu-hover-text);
+}
+
+.menu-item.ctx-danger:hover {
+  background: var(--menu-danger-hover-bg);
+  color: #fff;
+}
+
+.menu-item[style*="pointer-events: none"],
+.menu-item[style*="pointer-events:none"] {
+  cursor: default;
+  color: var(--menu-disabled-text);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--menu-separator);
+
+  margin: 4px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading,
+.no-results {
+  padding: 40px;
+
+  text-align: center;
+
+  opacity: 0.6;
+}
+
+mark,
+.tree-highlight {
+  display: inline;
+  background: rgba(138, 79, 255, 0.45);
+  color: #fff;
+  border-bottom: 2px solid rgba(200, 200, 255, 0.8);
+  border-radius: 2px;
+}
+
+mark.hl {
+  display: inline;
+  background: var(--hl-bg);
+  color: var(--hl-color);
+  border-bottom: none;
+  border-radius: 2px;
+  padding: 0px;
+  box-shadow: 0 0 0 1px rgba(255, 200, 0, 0.4);
+}
+
+.selected mark.hl,
+.folder-row.selected mark.hl,
+.row.selected mark.hl {
+  background: rgba(220, 190, 50, 0.6);
+  color: #ffd557;
+  box-shadow: none;
+}
+
+.no-results-msg {
+  padding: 32px 20px;
+  color: var(--text);
+  opacity: 0.75;
+  font-size: 12px;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+#breadcrumb,
+.breadcrumb-container,
+#bc-bar {
+  display: none !important;
+}
+
+.command-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin: 6px 10px 0 10px;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+}
+
+#status-bar {
+  position: relative;
+}
+
+.cmd-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  height: 28px;
+  padding: 0 10px;
+
+  font-size: 12px;
+  color: var(--cmd-btn-text, #dcdcdc);
+
+  background: var(--cmd-btn-bg, #242424);
+
+  border: 1px solid var(--cmd-btn-border, #343434);
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.cmd-btn:hover {
+  background: var(--cmd-btn-hover, #2d2d2d);
+  color: var(--cmd-btn-text-hover, #fff);
+}
+
+#copy-btn span,
+#move-btn span,
+#delete-btn span {
+  margin-left: 6px;
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+button.cmd-btn {
+  display: inline-flex !important;
+  width: auto !important;
+}
+
+#actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-left: auto;
+}
+
+#actions .cmd-btn:hover {
+  background: var(--cmd-btn-hover, #2d2d2d);
+  color: var(--cmd-btn-text-hover, #fff);
+}
+
+#actions .cmd-btn span {
+  opacity: .6;
+  font-size: 11px;
+}
+
+.folder-children {
+  margin-left: 10px;
+  border-left: 1px solid var(--line);
+
+  display: none;
+  
+}
+
+[draggable="true"] {
+  user-select: none;
+  -webkit-user-drag: element;
+}
+
+.row.drag-over {
+    background-color: rgba(0, 120, 215, 0.25) !important;
+    outline: 1px solid #0078d7;
+    outline-offset: -1px;
+}
+
+.row.drag-over::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #3b82f6;
+}
+
+.folder-row.drag-over{
+  background:#2f5cff33;
+  outline:1px solid #5c8cff;
+}
+
+.folder-row.drag-over::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #3b82f6;
+}
+
+.drag-ghost{
+  position: absolute;
+  top:-9999px;
+  left:-9999px;
+  padding:6px 10px;
+  background: var(--tooltip-bg, #2b2b2b);
+  color: var(--text);
+  border-radius:6px;
+  font-size:12px;
+  pointer-events:none;
+}
+
+#status-bar {
+    height: 65px;
+    padding: 8px 15px;
+    background: var(--statusbar-bg, #181818);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+#stat-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+#stat-name {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 0;
+}
+
+#status-title-input {
+    width: auto !important;
+    min-width: 60px;
+    max-width: 85%;
+    height: 20px !important;
+    padding: 1px 0px !important;
+    font-size: 13px !important;
+    background: transparent !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 3px;
+    color: var(--text) !important;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+}
+
+#status-title-input:hover {
+    border-color: var(--border) !important;
+}
+
+#status-title-input:focus {
+    border-color: var(--accent) !important;
+    background: var(--input-bg) !important;
+    outline: none !important;
+}
+
+#stat-path {
+    display: block;
+    color: #9a9a9a;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+#stat-url {
+    display: block;
+    color: var(--stat-url-color, #6b7280);
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 87%;
+}
+
+.stat-text {
+    display: block;
+    min-width: 0;
+}
+
+.row.selected {
+  background-color: #3c3c3c !important;
+  color: #d0d0d0 !important;
+}
+
+.active-pane .row.selected,
+.active-pane .folder-row.selected {
+    background-color: #264f78 !important;
+    color: #ffffff !important;
+}
+
+.col-resize-handle {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 20;
+  background: transparent;
+}
+
+.col-resize-handle[data-edge="right"] {
+  right: -5px;
+}
+
+.col-resize-handle[data-edge="left"] {
+  left: -5px;
+}
+
+.col-resize-handle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: transparent;
+  transition: background 0.1s;
+}
+
+.col-resize-handle:hover::after,
+.col-resize-handle.dragging::after {
+  background: var(--accent);
+  opacity: .6;
+}
+
+#panel-resizer {
+  width: 6px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+}
+
+#panel-resizer::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: var(--border);
+  opacity: 0.5;
+}
+
+#panel-resizer:hover::after,
+#panel-resizer.dragging::after {
+  width: 2px;
+  background: var(--accent);
+  opacity: .7;
+}
+
+.pane-splitter {
+  width: 6px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+}
+
+.pane-splitter::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: var(--border);
+  opacity: 0.5;
+}
+
+.pane-splitter:hover::after,
+.pane-splitter.dragging::after {
+  width: 2px;
+  background: var(--accent);
+  opacity: .7;
+}
+
+#global-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 33px;
+  padding: 0 10px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 100;
+}
+
+#global-toolbar .tb-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  margin: 0 3px;
+  flex-shrink: 0;
+}
+
+.tb-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: background 0.1s, color 0.1s;
+}
+
+.tb-btn:hover:not(:disabled) {
+  background: var(--hover-gray);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.tb-btn.tb-parent:not(:disabled) {
+  color: #aab8cc;
+}
+.tb-btn.tb-parent:not(:disabled):hover {
+  background: rgba(100,150,220,0.16);
+  border-color: rgba(100,150,220,0.32);
+  color: #ccdff8 !important;
+}
+
+.tb-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.tb-btn .tb-tooltip {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tooltip-bg, #2b2b2b);
+  color: #dde6f5;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 3px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s 0.6s, visibility 0s 0.75s;
+  z-index: 9999;
+}
+
+.tb-btn:hover:not(:disabled) .tb-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.15s 0.6s, visibility 0s 0.6s;
+  overflow: visible;
+  left: 50%;
+}
+
+.tb-btn.tb-danger:hover:not(:disabled) {
+  background: rgba(180, 40, 40, 0.18);
+  border-color: rgba(180, 40, 40, 0.4);
+  color: #f08080;
+}
+
+#move-popup {
+  position: fixed;
+  z-index: 8100;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.78);
+  transition: opacity 0.15s cubic-bezier(0.34,1.4,0.64,1), transform 0.15s cubic-bezier(0.34,1.4,0.64,1);
+}
+
+#move-popup.visible {
+  display: flex;
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#move-popup.dragging {
+  transition: none !important;
+}
+
+#move-popup-left,
+#move-popup-right {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: none;
+  background: var(--accent, #4c8ed9);
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(76,142,217,0.45), 0 1px 3px rgba(0,0,0,0.35);
+  transition: background 0.12s, box-shadow 0.12s, transform 0.1s;
+  padding: 0;
+}
+
+#move-popup-left:hover:not(:disabled),
+#move-popup-right:hover:not(:disabled) {
+  background: #5ba0e8;
+  box-shadow: 0 4px 16px rgba(76,142,217,0.55), 0 1px 4px rgba(0,0,0,0.3);
+  transform: scale(1.08);
+}
+
+#move-popup-left:active:not(:disabled),
+#move-popup-right:active:not(:disabled) {
+  cursor: grabbing;
+  transform: scale(0.94);
+}
+#move-popup-left:disabled,
+#move-popup-right:disabled { opacity: 0.35; cursor: default; transform: none; }
+
+@media (prefers-color-scheme: light) {
+  #move-popup-left, #move-popup-right { background: var(--accent, #2563ab); box-shadow: 0 2px 10px rgba(37,99,171,0.35), 0 1px 3px rgba(0,0,0,0.12); }
+  #move-popup-left:hover:not(:disabled), #move-popup-right:hover:not(:disabled) { background: #3070c4; }
+  .tb-btn { color: #444; }
+  .tb-btn:hover:not(:disabled) { color: #111; }
+}
+
+#donate-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #2563ab 0%, #4c8ed9 100%);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 12px rgba(76,142,217,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+#donate-gh:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76,142,217,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div id="global-toolbar">
+  <button class="tb-btn tb-back" id="tb-back" disabled><svg width="12" height="11" viewBox="0 0 12 11" fill="none"><path d="M7.5 2L4 5.5L7.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="5.5" x2="11" y2="5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tb-tooltip">Go Back (Alt+&#8592;)</span></button>
+  <button class="tb-btn tb-forward" id="tb-forward" disabled><svg width="12" height="11" viewBox="0 0 12 11" fill="none"><path d="M4.5 2L8 5.5L4.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="5.5" x2="1" y2="5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tb-tooltip">Go Forward (Alt+&#8594;)</span></button>
+  <button class="tb-btn tb-parent" id="tb-parent" disabled><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 8.5V3M3 5.5L5.5 3L8 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Up to Parent (Alt+↑)</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-undo" id="tb-undo" disabled><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4H7.5C9.43 4 11 5.57 11 7.5S9.43 11 7.5 11H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4.5 1.5L2 4L4.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Undo (Ctrl+Z)</span></button>
+  <button class="tb-btn tb-redo" id="tb-redo" disabled><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 4H4.5C2.57 4 1 5.57 1 7.5S2.57 11 4.5 11H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 1.5L10 4L7.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Redo (Ctrl+Y)</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-move-left" id="tb-move-left" style="width:26px;" title=""><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 2.5L9 6.5L4 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Move to Right</span></button>  <button class="tb-btn tb-move-right" id="tb-move-right" style="width:26px;" title=""><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M9 2.5L4 6.5L9 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Move to Left</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-open-opposite" id="tb-open-opposite"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="7" y="3" width="5" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 6.5H6M6 6.5L4.5 5M6 6.5L4.5 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 4V9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="tb-tooltip">Open in Opposite Panel</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-container-left" id="tb-container-left"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 3.5C1.5 2.95 1.95 2.5 2.5 2.5H5L6 4H10.5C11.05 4 11.5 4.45 11.5 5V9.5C11.5 10.05 11.05 10.5 10.5 10.5H2.5C1.95 10.5 1.5 10.05 1.5 9.5V3.5Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7.5H5M5 7.5L6 6.5M5 7.5L6 8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Show Containing Folder in Left Panel</span></button>
+  <button class="tb-btn tb-container-right" id="tb-container-right"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 3.5C1.5 2.95 1.95 2.5 2.5 2.5H5L6 4H10.5C11.05 4 11.5 4.45 11.5 5V9.5C11.5 10.05 11.05 10.5 10.5 10.5H2.5C1.95 10.5 1.5 10.05 1.5 9.5V3.5Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 7.5H8M8 7.5L7 6.5M8 7.5L7 8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Show Containing Folder in Right Panel</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-cut" id="tb-cut"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="3" cy="9.5" r="1.8" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="9.5" r="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M3 7.7V2.5L6 5.5L9 2.5V7.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Cut (Ctrl+X)</span></button>
+  <button class="tb-btn tb-copy-url" id="tb-copy-url"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3.5" width="7.5" height="7.5" rx="1.2" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 3.5V2.5A1 1 0 0 1 4.5 1.5h5A1 1 0 0 1 10.5 2.5v5A1 1 0 0 1 9.5 8.5H8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="tb-tooltip">Copy URL (Ctrl+C)</span></button>
+  <button class="tb-btn tb-paste" id="tb-paste" disabled><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="3" width="8" height="8" rx="1.2" stroke="currentColor" stroke-width="1.3"/><path d="M4 3V2.2A.8.8 0 0 1 4.8 1.4h2.4A.8.8 0 0 1 8 2.2V3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M6 5.5V8.5M4.5 7H7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span class="tb-tooltip">Paste (Ctrl+V)</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-select-all" id="tb-select-all"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 6L5.5 8L8.5 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Select All (Ctrl+A)</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-new-folder" id="tb-new-folder"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 3.5C1.5 2.95 1.95 2.5 2.5 2.5H5L6.5 4H10.5C11.05 4 11.5 4.45 11.5 5V10C11.5 10.55 11.05 11 10.5 11H2.5C1.95 11 1.5 10.55 1.5 10V3.5Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 6.5V9.5M5 8H8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span class="tb-tooltip">New Folder</span></button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn tb-rename"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 9.5H4.5L9.5 4.5L7.5 2.5L2.5 7.5V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 3.5L9.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="tb-tooltip">Rename</span></button>
+  <button class="tb-btn tb-open-all"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="4" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="7" y="4" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="4" y="1" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.3"/></svg><span class="tb-tooltip">Open All in Tabs</span></button>
+  <button class="tb-btn tb-danger tb-delete" id="delete-btn" disabled><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 3.5H10M4.5 3.5V2.5H7.5V3.5M4.5 5.5V9M7.5 5.5V9M3 3.5L3.5 10H8.5L9 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tb-tooltip">Delete</span></button>
+</div>
+
+<div id="workspace">
+
+  
+  <section class="pane" id="pane-left">
+
+    <div class="tree-panel">
+
+      <div class="tree-header">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="tree-search-left"
+            placeholder="Filter folders..."
+            autocomplete="off"
+          >
+          <span id="clear-tree-left" class="clear-btn">✕</span>
+        </div>
+      </div>
+
+      <div id="tree-left"  tabindex="0"></div>
+
+    </div>
+
+<div class="pane-splitter" data-pane="left"></div>
+
+    <div class="results-panel">
+
+      <div class="search-area">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="search-left"
+            placeholder="Search Bookmarks..."
+            autocomplete="off"
+          >
+          <span id="clear-search-left" class="clear-btn">✕</span>
+        </div>
+      </div>
+
+      <div id="results-list-left">
+
+        <div class="table-header" id="th-left">
+          <div class="sort-col" data-sort="title" data-col-id="name">
+            Name <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="left" data-col="name" data-edge="right"></div>
+          </div>
+          <div class="sort-col path-col" data-sort="fullPath" data-col-id="path">
+            Path <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="left" data-col="path" data-edge="left"></div>
+            <div class="col-resize-handle" data-pane="left" data-col="path" data-edge="right"></div>
+          </div>
+          <div class="sort-col" data-sort="url" data-col-id="url">
+            URL <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="left" data-col="url" data-edge="left"></div>
+            <div class="col-resize-handle" data-pane="left" data-col="url" data-edge="right"></div>
+          </div>
+          <div class="sort-col" data-sort="dateAdded" data-col-id="date">
+            Date <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="left" data-col="date" data-edge="left"></div>
+          </div>
+        </div>
+
+        <div class="results-content">
+
+          <div class="virtual-container">
+
+            <div class="spacer"></div>
+
+            <div class="visible-items" id="visible-items-left"></div>
+
+          </div>
+
+        </div>
+
+        <div class="pane-mini-bar" id="pane-mini-left"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+<div id="panel-resizer"></div>
+
+  
+  <section class="pane" id="pane-right">
+
+    <div class="tree-panel">
+
+      <div class="tree-header">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="tree-search-right"
+            placeholder="Filter folders..."
+            autocomplete="off"
+          >
+          <span id="clear-tree-right" class="clear-btn">✕</span>
+        </div>
+      </div>
+ 
+      <div id="tree-right" tabindex="0"> </div>
+
+    </div>
+	
+	<div class="pane-splitter" data-pane="left"></div>
+	
+
+    <div class="results-panel">
+
+      <div class="search-area">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="search-right"
+            placeholder="Search Bookmarks..."
+            autocomplete="off"
+          >
+          <span id="clear-search-right" class="clear-btn">✕</span>
+        </div>
+      </div>
+
+      <div id="results-list-right">
+
+        <div class="table-header" id="th-right">
+          <div class="sort-col" data-sort="title" data-col-id="name">
+            Name <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="right" data-col="name" data-edge="right"></div>
+          </div>
+          <div class="sort-col path-col" data-sort="fullPath" data-col-id="path">
+            Path <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="right" data-col="path" data-edge="left"></div>
+            <div class="col-resize-handle" data-pane="right" data-col="path" data-edge="right"></div>
+          </div>
+          <div class="sort-col" data-sort="url" data-col-id="url">
+            URL <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="right" data-col="url" data-edge="left"></div>
+            <div class="col-resize-handle" data-pane="right" data-col="url" data-edge="right"></div>
+          </div>
+          <div class="sort-col" data-sort="dateAdded" data-col-id="date">
+            Date <span class="sort-icon"></span>
+            <div class="col-resize-handle" data-pane="right" data-col="date" data-edge="left"></div>
+          </div>
+        </div>
+
+        <div class="results-content">
+
+          <div class="virtual-container">
+
+            <div class="spacer"></div>
+
+            <div class="visible-items" id="visible-items-right"></div>
+
+          </div>
+
+        </div>
+
+        <div class="pane-mini-bar" id="pane-mini-right"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<div id="status-bar">
+
+  <div id="stat-left">
+
+    <div class="stat-line">
+      <span id="stat-name" class="stat-text"></span>
+    </div>
+
+    <div class="stat-line">
+      <span id="stat-path" class="stat-text"></span>
+    </div>
+
+<div class="stat-line">
+  <span id="stat-url-copy" title="Copy URL" style="cursor:pointer;opacity:0.4;margin-right:4px;display:none;flex-shrink:0;">
+    <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M7.5 1.5H3C2.17 1.5 1.5 2.17 1.5 3v5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><rect x="3.5" y="3.5" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>
+  </span>
+  <span id="stat-url" class="stat-text"></span>
+</div>
+
+  </div>
+
+<div id="stat-right" title="About">
+  <img src="icons/icon_32.png" width="24" height="24" style="flex-shrink:0;vertical-align:middle;">
+  <span style="font-size:12px;font-weight:600;vertical-align:middle;margin-left:6px;"></span>
+</div>
+
+</div>
+
+<div id="about-overlay">
+  <div id="about-card">
+    <div id="close-about">✕</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+      <img src="icons/icon_48.png" width="32" height="32" style="flex-shrink:0;">
+      <div>
+        <h2 style="margin:0;font-size:18px;color:var(--text);">
+          Overdue Bookmarks
+        </h2>
+        <div style="font-size:10px;color:var(--accent);font-weight:bold;">
+          Community Edition • v1.0
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        font-size:11px;
+        color:var(--text);
+        opacity:0.7;
+        font-style:italic;
+        margin:8px 0 15px 0;
+        border-bottom:1px solid var(--border);
+        padding-bottom:10px;
+      "
+    >
+      "The split pane bookmark manager that was long overdue."
+    </div>
+<div style="margin-top:4px;">
+  <div style="
+    background: linear-gradient(135deg, rgba(76,142,217,0.12) 0%, rgba(37,99,171,0.10) 100%);
+    border: 1px solid rgba(76,142,217,0.25);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  " class="about-donate-box">
+    <div style="font-size:11px;color:var(--text);opacity:0.8;line-height:1.7;margin-bottom:12px;">
+      If <strong style="color:var(--text);opacity:1;">Overdue Bookmarks</strong> is saving you time,<br>
+      consider supporting this project. 🎉
+    </div>
+    <a
+      id="donate-gh"
+      href="https://github.com/sponsors/overduebookmarks"
+      target="_blank"
+      title="GitHub Sponsors"
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"
+        xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Donate (on GitHub)
+    </a>
+  </div>
+</div>
+</div>
+</div>
+
+<div id="confirm-overlay" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;">
+  <div id="confirm-box" style="background:#252525;border:1px solid #444;border-radius:10px;padding:20px 24px;min-width:280px;max-width:420px;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+    <div id="confirm-msg" style="font-size:13px;color:#e6e6e6;margin-bottom:18px;line-height:1.5;white-space:pre-wrap;"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button id="confirm-no" tabindex="1" style="padding:5px 16px;border-radius:5px;border:1px solid #555;background:#333;color:#ccc;cursor:pointer;font-size:12px;">Cancel</button>
+      <button id="confirm-yes" tabindex="2" style="padding:5px 16px;border-radius:5px;border:1px solid #c0392b;background:#c0392b;color:#fff;cursor:pointer;font-size:12px;font-weight:bold;">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#333;color:#e6e6e6;padding:7px 18px;border-radius:6px;font-size:12px;z-index:9999;pointer-events:none;border:1px solid #555;"></div>
+
+<div id="context-menu">
+
+  
+  <div class="menu-item" data-type="bookmark" id="ctx-open">Open in New Tab</div>
+  <div class="menu-item" data-type="bookmark" id="ctx-open-bg">Open in Background Tab</div>
+  <div class="menu-item" data-type="bookmark" id="ctx-expand-left">Show Containing Folder in Left Panel</div>
+  <div class="menu-item" data-type="bookmark" id="ctx-expand-right">Show Containing Folder in Right Panel</div>
+
+  <hr data-type="bookmark" > 
+  <div class="menu-item" data-type="bookmark" id="ctx-send">Move to Right Panel</div>  
+  <hr data-type="bookmark" > 
+  <div class="menu-item" data-type="bookmark" id="ctx-cut">Cut</div>
+  <div class="menu-item" data-type="bookmark" id="ctx-copy">Copy URL</div> 
+  <div class="menu-item" data-type="bookmark" id="ctx-paste">Paste</div>
+  <div class="menu-item" data-type="bookmark" id="ctx-rename">Rename</div>  
+  <hr data-type="bookmark">
+  <div class="menu-item ctx-danger" data-type="bookmark" id="ctx-delete">Delete</div>
+  <hr data-type="bookmark">
+  <div class="menu-item" data-type="bookmark" id="ctx-add-folder">Add New Folder</div>
+
+  
+  <div class="menu-item" id="ctx-empty-paste" style="display:none">Paste</div>
+  <div class="menu-item" id="ctx-empty-add-folder" style="display:none">Add New Folder</div>
+  <hr id="ctx-empty-hr" style="display:none">
+  <div class="menu-item" id="ctx-empty-select-all" style="display:none">Select All</div>
+
+  
+  <div class="menu-item" data-type="folder" id="ctx-folder-open-all">Open All Links in Tabs</div>
+  <div class="menu-item" data-type="folder" id="ctx-folder-open-all-bg">Open All Links in Background Tabs</div>
+  <div class="menu-item" data-type="folder" id="ctx-folder-display-opposite">Open in Other Panel</div>
+  <hr data-type="folder">
+  <div class="menu-item" data-type="folder" id="ctx-folder-send">Move Folder to Right Panel</div>
+  <hr data-type="folder" data-root-hide>
+  <div class="menu-item" data-type="folder" id="ctx-folder-cut" data-root-hide>Cut</div>
+  <div class="menu-item" data-type="folder" id="ctx-folder-copy" data-root-hide>Copy</div>
+  <div class="menu-item" data-type="folder" id="ctx-folder-paste">Paste</div>
+  <div class="menu-item" data-type="folder" id="ctx-folder-rename" data-root-hide>Rename</div>
+  <hr data-type="folder" data-root-hide>
+  <div class="menu-item ctx-danger" data-type="folder" id="ctx-folder-delete" data-root-hide>Delete</div>
+  <hr data-type="folder">
+  <div class="menu-item" data-type="folder" id="ctx-folder-add-folder">Add New Folder</div>
+
+</div>
+
+<div id="move-popup">
+  <button id="move-popup-left" title="Move to Right (F6)">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M7 4L12 9L7 14" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button id="move-popup-right" title="Move to Left (F7)">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M11 4L6 9L11 14" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
+<script src="app.js"></script>
+
+</body>	
+</html>
