@@ -89,7 +89,6 @@ Full keyboard support — navigate the folder tree and bookmark list using arrow
 | Button | Shortcut | Description |
 |---|---|---|
 | Back | Alt+← | Go to previous folder |
-| Copy URL | Ctrl+C | Copy URL to clipboard |
 | Cut | Ctrl+X | Cut selected items |
 | Delete | Delete | Delete selected items |
 | Escape | Esc | Clear selection / close search / close context menu |
