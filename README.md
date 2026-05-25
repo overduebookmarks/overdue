@@ -35,8 +35,6 @@ All panel and tree widths are fully adjustable — drag the splitter between the
 - Move popup buttons appearing on the panel divider for quick one-click transfer — two independent arrow buttons, each enabled only when its source panel has a selection. The buttons can be freely repositioned by dragging.
 - Cross-panel selection is preserved when switching panels — selections in both panes can coexist, making it easy to pick a source in one panel and a destination in the other before moving
 - Cut / Paste support (Ctrl+X / Ctrl+V)
-- Copy (copies URL only)
-
 - **Undo / Redo** (Ctrl+Z / Ctrl+Y)
 
 ### Toolbar Actions
@@ -53,7 +51,7 @@ All panel and tree widths are fully adjustable — drag the splitter between the
 | Show Containing Folder (Left) | — | Reveal parent folder in left panel |
 | Show Containing Folder (Right) | — | Reveal parent folder in right panel |
 | Cut | Ctrl+X | Cut selected items |
-| Copy URL | Ctrl+C | Copy URL to clipboard |
+| Copy URL | Copy URL to clipboard |
 | Paste | Ctrl+V | Paste cut items |
 | Select All | Ctrl+A | Select all items in active panel |
 | New Folder | — | Create a new subfolder |
