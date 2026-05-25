@@ -34,7 +34,8 @@ All panel and tree widths are fully adjustable — drag the splitter between the
 - Move selected items to the opposite panel via drag and drop, toolbar, context menu or popup buttons
 - Move popup buttons appearing on the panel divider for quick one-click transfer — two independent arrow buttons, each enabled only when its source panel has a selection. The buttons can be freely repositioned by dragging.
 - Cross-panel selection is preserved when switching panels — selections in both panes can coexist, making it easy to pick a source in one panel and a destination in the other before moving
-- Cut / Copy / Paste support (Ctrl+X / Ctrl+C / Ctrl+V)
+- Cut / Paste support (Ctrl+X / Ctrl+V)
+- Copy (copies URL only)
 
 - **Undo / Redo** (Ctrl+Z / Ctrl+Y)
 
