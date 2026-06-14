@@ -3,113 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="googleb6b65b659deae6e2" />
-    <title>Overdue Bookmarks - Profesyonel Yer İmi Yönetimi</title>
+    <title>Overdue Bookmarks - İndir</title>
     <style>
         :root {
             --primary-color: #2563eb;
             --text-color: #334155;
             --bg-color: #f8fafc;
-            --section-bg: #ffffff;
+            --card-bg: #ffffff;
             --border-color: #e2e8f0;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--section-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3 { color: #0f172a; }
-        code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; }
-        blockquote {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 20px;
-            font-style: italic;
-            color: #64748b;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.9em;
-        }
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        th { background-color: #f1f5f9; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        
+        /* İndirme Butonları Tasarımı */
+        .download-container { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
+            display: flex; flex-direction: column; align-items: center; padding: 20px;
+            background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px;
+            text-decoration: none; color: var(--text-color); width: 140px;
+            transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        hr { border: 0; border-top: 1px solid var(--border-color); margin: 40px 0; }
-        ul { padding-left: 20px; }
+        .btn:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .btn span { margin-top: 10px; font-weight: bold; }
+        .btn small { color: var(--primary-color); font-weight: bold; margin-top: 5px; }
+        .icon { font-size: 32px; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Overdue Bookmarks</h1>
-    <blockquote>"The split pane bookmark manager that was long overdue."</blockquote>
-    <p>Tarayıcı yer imlerinize dosya yöneticisi hissi getiren, çift bölmeli bir yer imi yönetimi eklentisi.</p>
+    <p>Tarayıcı yer imlerinizi bir dosya yöneticisi gibi yönetin. Tarayıcınızı seçin ve hemen yükleyin:</p>
 
-    <hr>
-
-    <h2>Özellikler</h2>
-    <h3>Çift Bölmeli Düzen</h3>
-    <p>İki bağımsız panel, her birinin kendi klasör ağacı ve yer imi listesi ile yan yana çalışır. Bir tarafta gezinirken diğerinde hedef klasörünüzü açık tutun.</p>
-
-    <h3>Klasör Ağacı Navigasyonu</h3>
-    <ul>
-        <li>Hızlı filtreleme ve hiyerarşik klasör yapısı.</li>
-        <li>Alt klasörler dahil toplam yer imi sayısını gösteren rozetler.</li>
-        <li>Geri/İleri/Üst klasöre git navigasyonu.</li>
-    </ul>
-
-    <h3>Arama ve Yönetim</h3>
-    <p>Canlı filtreleme, sürükle-bırak desteği ve gelişmiş klavye kısayolları ile yer imlerinizi saniyeler içinde düzenleyin.</p>
-
-    <h2>Kısayol Tablosu</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>İşlem</th>
-                <th>Kısayol</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Geri</td><td>Alt + ←</td></tr>
-            <tr><td>İleri</td><td>Alt + →</td></tr>
-            <tr><td>Kes / Kopyala / Yapıştır</td><td>Ctrl + X / C / V</td></tr>
-            <tr><td>Tümünü Seç</td><td>Ctrl + A</td></tr>
-            <tr><td>Arama</td><td>Ctrl + F</td></tr>
-            <tr><td>Yeniden Adlandır</td><td>F2</td></tr>
-        </tbody>
-    </table>
-
-    <h2>Lisans ve Destek</h2>
-    <p>Bu proje <strong>AGPLv3</strong> ile lisanslanmıştır. Ticari kullanımlar için lütfen iletişime geçin.</p>
-    
-    <p><strong>İletişim:</strong> <a href="mailto:overduebookmarks@gmail.com">overduebookmarks@gmail.com</a></p>
-    
-    <a href="https://github.com/sponsors/overduebookmarks" class="btn">GitHub'da Destekle</a>
+    <div class="download-container">
+        <a href="https://chromewebstore.google.com/detail/overdue-split-pane-bookma/mlgkmoagnoofdpejecgbcnhaajlkgbdp?pli=1" class="btn">
+            <div class="icon">🌐</div>
+            <span>Chrome</span>
+            <small>Download Now</small>
+        </a>
+        
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/overdue-bookmarks/" class="btn">
+            <div class="icon">🦊</div>
+            <span>Firefox</span>
+            <small>Download Now</small>
+        </a>
+        
+        <a href="https://microsoftedge.microsoft.com/addons/detail/overdue-bookmarks/phdbejhgeckfkeofeoihphdhanbbaoki" class="btn">
+            <div class="icon">Ⓜ️</div>
+            <span>Edge</span>
+            <small>Download Now</small>
+        </a>
+    </div>
 </div>
 
 </body>
