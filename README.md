@@ -1,4 +1,4 @@
-# Overdue Bookmarks
+# Overdue - Split Pane Bookmark Manager
 
 
 > *"The split pane bookmark manager that was long overdue."*
