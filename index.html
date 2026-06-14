@@ -1,60 +1,159 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overdue Bookmarks - İndir</title>
+    <meta name="google-site-verification" content="googleb6b65b659deae6e2" />
+    <title>Overdue Bookmarks</title>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --text-color: #334155;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-        }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        
-        /* İndirme Butonları Tasarımı */
-        .download-container { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
-        .btn {
-            display: flex; flex-direction: column; align-items: center; padding: 20px;
-            background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px;
-            text-decoration: none; color: var(--text-color); width: 140px;
-            transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .btn:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-        .btn span { margin-top: 10px; font-weight: bold; }
-        .btn small { color: var(--primary-color); font-weight: bold; margin-top: 5px; }
-        .icon { font-size: 32px; margin-bottom: 5px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        h1, h2, h3 { color: #000; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #f8f8f8; }
+        .download-box { display: flex; gap: 15px; margin: 20px 0; }
+        .btn { padding: 12px 20px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .btn:hover { background: #1d4ed8; }
+        .license { background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; margin-top: 20px; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
     </style>
 </head>
 <body>
 
-<div class="container">
     <h1>Overdue Bookmarks</h1>
-    <p>Tarayıcı yer imlerinizi bir dosya yöneticisi gibi yönetin. Tarayıcınızı seçin ve hemen yükleyin:</p>
+    <blockquote><em>"The split pane bookmark manager that was long overdue."</em></blockquote>
+    <p>A split pane bookmark manager extension that brings a file-manager feel to your browser bookmarks.</p>
 
-    <div class="download-container">
-        <a href="https://chromewebstore.google.com/detail/overdue-split-pane-bookma/mlgkmoagnoofdpejecgbcnhaajlkgbdp?pli=1" class="btn">
-            <div class="icon">🌐</div>
-            <span>Chrome</span>
-            <small>Download Now</small>
-        </a>
-        
-        <a href="https://addons.mozilla.org/en-US/firefox/addon/overdue-bookmarks/" class="btn">
-            <div class="icon">🦊</div>
-            <span>Firefox</span>
-            <small>Download Now</small>
-        </a>
-        
-        <a href="https://microsoftedge.microsoft.com/addons/detail/overdue-bookmarks/phdbejhgeckfkeofeoihphdhanbbaoki" class="btn">
-            <div class="icon">Ⓜ️</div>
-            <span>Edge</span>
-            <small>Download Now</small>
-        </a>
+    <div class="download-box">
+        <a href="https://chromewebstore.google.com/detail/overdue-split-pane-bookma/mlgkmoagnoofdpejecgbcnhaajlkgbdp?pli=1" class="btn">Chrome: Download Now</a>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/overdue-bookmarks/" class="btn">Firefox: Download Now</a>
+        <a href="https://microsoftedge.microsoft.com/addons/detail/overdue-bookmarks/phdbejhgeckfkeofeoihphdhanbbaoki" class="btn">Edge: Download Now</a>
     </div>
-</div>
+
+    <h2>Features</h2>
+    <h3>Split Pane / Dual Pane Layout</h3>
+    <p>Two independent panels sit side by side, each with its own folder tree and bookmark list. Browse one panel while the other holds your destination — no need to navigate back and forth.</p>
+    <p>All panel and tree widths are fully adjustable — drag the splitter between the two panes to resize them, and drag the divider between the folder tree and bookmark list within each pane to tune your layout.</p>
+
+    <h3>Folder Tree Navigation</h3>
+    <ul>
+        <li>Filter folders to quickly find and open any folder</li>
+        <li>Collapsible folder tree with depth-indented hierarchy</li>
+        <li>Each folder displays a count badge showing the total number of bookmarks it contains, including all subfolders recursively (URLs only)</li>
+        <li>Back / Forward / Up to Parent navigation buttons</li>
+    </ul>
+
+    <h3>Bookmark List</h3>
+    <ul>
+        <li>Sortable columns: <strong>Name</strong>, <strong>Path</strong>, <strong>URL</strong>, <strong>Date Added</strong></li>
+        <li>Sorting is for browsing only — it does not affect the original order in the browser</li>
+        <li>Resizable columns and panels via drag handles — all fully collapsible</li>
+        <li>Virtual scrolling for smooth performance with large bookmark collections</li>
+    </ul>
+
+    <h3>Searching</h3>
+    <p>Search bar with live filtering and highlighted matches. <strong>Path</strong> column appears automatically in search mode, allowing users to sort bookmarks by containing folders.</p>
+
+    <h3>Move & Organize</h3>
+    <ul>
+        <li>Move selected items to the opposite panel via drag and drop, toolbar, context menu or popup buttons</li>
+        <li>Move popup buttons appearing on the panel divider for quick one-click transfer — two independent arrow buttons, each enabled only when its source panel has a selection. The buttons can be freely repositioned by dragging.</li>
+        <li>Cross-panel selection is preserved when switching panels — selections in both panes can coexist.</li>
+        <li>Cut / Paste support (Ctrl+X / Ctrl+V)</li>
+        <li>Undo / Redo (Ctrl+Z / Ctrl+Y)</li>
+    </ul>
+
+    <h2>Toolbar Actions</h2>
+    <table>
+        <thead><tr><th>Button</th><th>Shortcut</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>Back</td><td>Alt+←</td><td>Go to previous folder</td></tr>
+            <tr><td>Forward</td><td>Alt+→</td><td>Go to next folder</td></tr>
+            <tr><td>Up</td><td>Alt+↑</td><td>Navigate to parent folder</td></tr>
+            <tr><td>Undo</td><td>Ctrl+Z</td><td>Undo last action</td></tr>
+            <tr><td>Redo</td><td>Ctrl+Y</td><td>Redo last undone action</td></tr>
+            <tr><td>Move Left → Right</td><td>F6</td><td>Move left panel selection to right panel</td></tr>
+            <tr><td>Move Right → Left</td><td>F7</td><td>Move right panel selection to left panel</td></tr>
+            <tr><td>Open in Opposite Panel</td><td>—</td><td>Open selected folder in other panel</td></tr>
+            <tr><td>Show Containing Folder (Left)</td><td>—</td><td>Reveal parent folder in left panel</td></tr>
+            <tr><td>Show Containing Folder (Right)</td><td>—</td><td>Reveal parent folder in right panel</td></tr>
+            <tr><td>Cut</td><td>Ctrl+X</td><td>Cut selected items</td></tr>
+            <tr><td>Copy URL</td><td>—</td><td>Copy URL to clipboard</td></tr>
+            <tr><td>Paste</td><td>Ctrl+V</td><td>Paste cut items</td></tr>
+            <tr><td>Select All</td><td>Ctrl+A</td><td>Select all items in active panel</td></tr>
+            <tr><td>New Folder</td><td>—</td><td>Create a new subfolder</td></tr>
+            <tr><td>Rename</td><td>—</td><td>Rename selected item</td></tr>
+            <tr><td>Open All in Tabs</td><td>—</td><td>Open all bookmarks in folder as tabs</td></tr>
+            <tr><td>Delete</td><td>—</td><td>Delete selected items</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Context Menu</h2>
+    <p>Right-click on any bookmark for quick access to: Open in New Tab / Background Tab, Show Containing Folder in Left or Right Panel, Move to Other Panel, Cut, Copy URL, Rename, Delete, Add New Folder.</p>
+    <p>Right-click on an empty area of the bookmark list: Paste, Add New Folder, Select All.</p>
+    <p>For folders specifically: Open All Links in Tabs / Background Tabs, Open in Other Panel, Move Folder to Right Panel, Cut, Copy, Paste, Rename, Delete, Add New Folder.</p>
+
+    <h2>Status Bar</h2>
+    <p>Displays the selected bookmark's name, folder path, and URL at the bottom. Click the name directly in the status bar to rename inline. The app logo on the right side of the status bar opens the About panel.</p>
+
+    <h2>Keyboard Navigation and Shortcuts</h2>
+    <table>
+        <thead><tr><th>Button</th><th>Shortcut</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>Back</td><td>Alt+←</td><td>Go to previous folder</td></tr>
+            <tr><td>Cut</td><td>Ctrl+X</td><td>Cut selected items</td></tr>
+            <tr><td>Delete</td><td>Delete</td><td>Delete selected items</td></tr>
+            <tr><td>Escape</td><td>Esc</td><td>Clear selection / close search / close context menu</td></tr>
+            <tr><td>Forward</td><td>Alt+→</td><td>Go to next folder</td></tr>
+            <tr><td>Move Left → Right</td><td>F6</td><td>Move left panel selection to right panel</td></tr>
+            <tr><td>Move Right → Left</td><td>F7</td><td>Move right panel selection to left panel</td></tr>
+            <tr><td>New Folder</td><td>—</td><td>Create a new subfolder</td></tr>
+            <tr><td>Open All in Tabs</td><td>—</td><td>Open all bookmarks in folder as tabs</td></tr>
+            <tr><td>Open bookmark</td><td>Enter</td><td>Open selected bookmark</td></tr>
+            <tr><td>Open in background tab</td><td>Ctrl+Enter</td><td>Open bookmark in background tab</td></tr>
+            <tr><td>Open in new window</td><td>Shift+Enter</td><td>Open bookmark in new window</td></tr>
+            <tr><td>Open in Opposite Panel</td><td>—</td><td>Open selected folder in other panel</td></tr>
+            <tr><td>Paste</td><td>Ctrl+V</td><td>Paste cut items</td></tr>
+            <tr><td>Redo</td><td>Ctrl+Y / Ctrl+Shift+Z</td><td>Redo last undone action</td></tr>
+            <tr><td>Rename</td><td>F2</td><td>Rename selected item</td></tr>
+            <tr><td>Search</td><td>Ctrl+F / F3</td><td>Focus bookmark search in active panel</td></tr>
+            <tr><td>Select All</td><td>Ctrl+A</td><td>Select all items in active panel</td></tr>
+            <tr><td>Show Containing Folder (Left)</td><td>—</td><td>Reveal parent folder in left panel</td></tr>
+            <tr><td>Show Containing Folder (Right)</td><td>—</td><td>Reveal parent folder in right panel</td></tr>
+            <tr><td>Tree Search</td><td>Ctrl+B / Shift+F3</td><td>Focus folder tree search in active panel</td></tr>
+            <tr><td>Undo</td><td>Ctrl+Z</td><td>Undo last action</td></tr>
+            <tr><td>Up</td><td>Alt+↑</td><td>Navigate to parent folder</td></tr>
+            <tr><td>Up (alternative)</td><td>Backspace</td><td>Navigate to parent folder</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Theming</h3>
+    <p>Automatically adapts to your system's light or dark mode preference via <code>prefers-color-scheme</code>.</p>
+
+    <h2>Browser Compatibility</h2>
+    <p>Compatible with Firefox, Chrome, Edge, and Opera.</p>
+
+    <h2>Permissions</h2>
+    <p>This extension requires the following browser permissions: <code>bookmarks</code> (to read, create, move, rename, and delete your bookmarks) and <code>tabs</code> (to open bookmarks in new tabs). No data is collected or transmitted. Everything runs locally in your browser.</p>
+
+    <h2>Version</h2>
+    <p><strong>Community Edition · v1.0</strong></p>
+
+    <h2>Support</h2>
+    <p>If Overdue Bookmarks is saving you time, consider supporting the project: <a href="https://github.com/sponsors/overduebookmarks">GitHub Sponsors</a></p>
+
+    <h2>Contact</h2>
+    <p>Questions, feedback, or bug reports: <a href="mailto:overduebookmarks@gmail.com">overduebookmarks@gmail.com</a></p>
+
+    <h2>License</h2>
+    <div class="license">
+        <h3>AGPLv3 — Free & Open Source</h3>
+        <p>Personal, non-commercial, and open source use is permitted under the <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3.0</a>. Any modified or derivative version must also be released under AGPLv3 with full source code available.</p>
+        
+        <h3>Commercial License — Required for Any Revenue</h3>
+        <p><strong>Any use of this software that involves generating revenue — directly or indirectly — requires explicit written permission from the author.</strong> This includes but is not limited to: selling the extension, bundling it in a paid product, offering it as part of a paid service, or monetizing it through ads or subscriptions.</p>
+        <p>To obtain a commercial license, contact: <strong>overduebookmarks@gmail.com</strong></p>
+    </div>
 
 </body>
 </html>
