@@ -2,181 +2,115 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="googleb6b65b659deae6e2" />
-    <title>Verification</title>
+    <title>Overdue Bookmarks - Profesyonel Yer İmi Yönetimi</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--section-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 { color: #0f172a; }
+        code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; }
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            font-style: italic;
+            color: #64748b;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th { background-color: #f1f5f9; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        hr { border: 0; border-top: 1px solid var(--border-color); margin: 40px 0; }
+        ul { padding-left: 20px; }
+    </style>
 </head>
 <body>
-# Overdue Bookmarks
 
+<div class="container">
+    <h1>Overdue Bookmarks</h1>
+    <blockquote>"The split pane bookmark manager that was long overdue."</blockquote>
+    <p>Tarayıcı yer imlerinize dosya yöneticisi hissi getiren, çift bölmeli bir yer imi yönetimi eklentisi.</p>
 
-> *"The split pane bookmark manager that was long overdue."*
+    <hr>
 
-A split pane bookmark manager extension that brings a file-manager feel to your browser bookmarks.
+    <h2>Özellikler</h2>
+    <h3>Çift Bölmeli Düzen</h3>
+    <p>İki bağımsız panel, her birinin kendi klasör ağacı ve yer imi listesi ile yan yana çalışır. Bir tarafta gezinirken diğerinde hedef klasörünüzü açık tutun.</p>
 
----
+    <h3>Klasör Ağacı Navigasyonu</h3>
+    <ul>
+        <li>Hızlı filtreleme ve hiyerarşik klasör yapısı.</li>
+        <li>Alt klasörler dahil toplam yer imi sayısını gösteren rozetler.</li>
+        <li>Geri/İleri/Üst klasöre git navigasyonu.</li>
+    </ul>
 
-## Features
+    <h3>Arama ve Yönetim</h3>
+    <p>Canlı filtreleme, sürükle-bırak desteği ve gelişmiş klavye kısayolları ile yer imlerinizi saniyeler içinde düzenleyin.</p>
 
-### Split Pane / Dual Pane Layout
-Two independent panels sit side by side, each with its own folder tree and bookmark list. Browse one panel while the other holds your destination — no need to navigate back and forth.
+    <h2>Kısayol Tablosu</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>İşlem</th>
+                <th>Kısayol</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Geri</td><td>Alt + ←</td></tr>
+            <tr><td>İleri</td><td>Alt + →</td></tr>
+            <tr><td>Kes / Kopyala / Yapıştır</td><td>Ctrl + X / C / V</td></tr>
+            <tr><td>Tümünü Seç</td><td>Ctrl + A</td></tr>
+            <tr><td>Arama</td><td>Ctrl + F</td></tr>
+            <tr><td>Yeniden Adlandır</td><td>F2</td></tr>
+        </tbody>
+    </table>
 
-All panel and tree widths are fully adjustable — drag the splitter between the two panes to resize them, and drag the divider between the folder tree and bookmark list within each pane to tune your layout.
+    <h2>Lisans ve Destek</h2>
+    <p>Bu proje <strong>AGPLv3</strong> ile lisanslanmıştır. Ticari kullanımlar için lütfen iletişime geçin.</p>
+    
+    <p><strong>İletişim:</strong> <a href="mailto:overduebookmarks@gmail.com">overduebookmarks@gmail.com</a></p>
+    
+    <a href="https://github.com/sponsors/overduebookmarks" class="btn">GitHub'da Destekle</a>
+</div>
 
-### Folder Tree Navigation
-- Filter folders to quickly find and open any folder
-- Collapsible folder tree with depth-indented hierarchy
-- Each folder displays a count badge showing the total number of bookmarks it contains, including all subfolders recursively (URLs only)
-- Back / Forward / Up to Parent navigation buttons
-
-### Bookmark List
-- Sortable columns: **Name**, **Path**, **URL**, **Date Added** 
-- Sorting is for browsing only — it does not affect the original order in the browser
-- Resizable columns and panels via drag handles — all fully collapsible
-- Virtual scrolling for smooth performance with large bookmark collections
-
-### Searching
-- Search bar with live filtering and highlighted matches
-- **Path** column appears automatically in search mode, allowing users to sort bookmarks by containing folders.
-
-### Move & Organize
-- Move selected items to the opposite panel via drag and drop, toolbar, context menu or popup buttons
-- Move popup buttons appearing on the panel divider for quick one-click transfer — two independent arrow buttons, each enabled only when its source panel has a selection. The buttons can be freely repositioned by dragging.
-- Cross-panel selection is preserved when switching panels — selections in both panes can coexist, making it easy to pick a source in one panel and a destination in the other before moving
-- Cut / Paste support (Ctrl+X / Ctrl+V)
-- **Undo / Redo** (Ctrl+Z / Ctrl+Y)
-
-### Toolbar Actions
-| Button | Shortcut | Description |
-|---|---|---|
-| Back | Alt+← | Go to previous folder |
-| Forward | Alt+→ | Go to next folder |
-| Up | Alt+↑ | Navigate to parent folder |
-| Undo | Ctrl+Z | Undo last action |
-| Redo | Ctrl+Y | Redo last undone action |
-| Move Left → Right | F6 | Move left panel selection to right panel |
-| Move Right → Left | F7 | Move right panel selection to left panel |
-| Open in Opposite Panel | — | Open selected folder in other panel |
-| Show Containing Folder (Left) | — | Reveal parent folder in left panel |
-| Show Containing Folder (Right) | — | Reveal parent folder in right panel |
-| Cut | Ctrl+X | Cut selected items |
-| Copy URL | Copy URL to clipboard |
-| Paste | Ctrl+V | Paste cut items |
-| Select All | Ctrl+A | Select all items in active panel |
-| New Folder | — | Create a new subfolder |
-| Rename | — | Rename selected item |
-| Open All in Tabs | — | Open all bookmarks in folder as tabs |
-| Delete | — | Delete selected items |
-
-### Context Menu
-Right-click on any bookmark for quick access to:
-- Open in New Tab / Background Tab
-- Show Containing Folder in Left or Right Panel
-- Move to Other Panel
-- Cut, Copy URL, Rename, Delete
-- Add New Folder
-
-Right-click on an empty area of the bookmark list:
-- Paste
-- Add New Folder
-- Select All
-
-For folders specifically:
-- Open All Links in Tabs / Background Tabs
-- Open in Other Panel
-- Move Folder to Right Panel
-- Cut, Copy, Paste, Rename, Delete
-- Add New Folder
-
-### Status Bar
-Displays the selected bookmark's **name**, **folder path**, and **URL** at the bottom. Click the name directly in the status bar to rename inline.
-
-The app logo on the right side of the status bar opens the About panel, where you can find version info and support links.
-
-### Keyboard Navigation and Shortcuts
-Full keyboard support — navigate the folder tree and bookmark list using arrow keys, with visible focus indicators.
-| Button | Shortcut | Description |
-|---|---|---|
-| Back | Alt+← | Go to previous folder |
-| Cut | Ctrl+X | Cut selected items |
-| Delete | Delete | Delete selected items |
-| Escape | Esc | Clear selection / close search / close context menu |
-| Forward | Alt+→ | Go to next folder |
-| Move Left → Right | F6 | Move left panel selection to right panel |
-| Move Right → Left | F7 | Move right panel selection to left panel |
-| New Folder | — | Create a new subfolder |
-| Open All in Tabs | — | Open all bookmarks in folder as tabs |
-| Open bookmark | Enter | Open selected bookmark |
-| Open in background tab | Ctrl+Enter | Open bookmark in background tab |
-| Open in new window | Shift+Enter | Open bookmark in new window |
-| Open in Opposite Panel | — | Open selected folder in other panel |
-| Paste | Ctrl+V | Paste cut items |
-| Redo | Ctrl+Y / Ctrl+Shift+Z | Redo last undone action |
-| Rename | F2 | Rename selected item |
-| Search | Ctrl+F / F3 | Focus bookmark search in active panel |
-| Select All | Ctrl+A | Select all items in active panel |
-| Show Containing Folder (Left) | — | Reveal parent folder in left panel |
-| Show Containing Folder (Right) | — | Reveal parent folder in right panel |
-| Tree Search | Ctrl+B / Shift+F3 | Focus folder tree search in active panel |
-| Undo | Ctrl+Z | Undo last action |
-| Up | Alt+↑ | Navigate to parent folder |
-| Up (alternative) | Backspace | Navigate to parent folder |
-
-
-### Theming
-Automatically adapts to your system's **light or dark mode** preference via `prefers-color-scheme`.
-
-
-## Browser Compatibility
-
-Compatible with Firefox, Chrome, Edge, and Opera.
-
----
-
-## Permissions
-
-This extension requires the following browser permissions:
-
-- `bookmarks` — to read, create, move, rename, and delete your bookmarks
-- `tabs` — to open bookmarks in new tabs
-
-No data is collected or transmitted. Everything runs locally in your browser.
-
----
-
-## Version
-
-**Community Edition · v1.0**
-
----
-
-## Support
-
-If Overdue Bookmarks is saving you time, consider supporting the project:
-
-- 💙 [GitHub Sponsors] https://github.com/sponsors/overduebookmarks 
-
----
-
-## Contact
-
-Questions, feedback, or bug reports:
-📧 [overduebookmarks@gmail.com](mailto:overduebookmarks@gmail.com)
-
----
-
-## License
-
-This project uses a **dual licensing** model:
-
-### AGPLv3 — Free & Open Source
-Personal, non-commercial, and open source use is permitted under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html). Any modified or derivative version must also be released under AGPLv3 with full source code available.
-
-### Commercial License — Required for Any Revenue
-**Any use of this software that involves generating revenue — directly or indirectly — requires explicit written permission from the author.** This includes but is not limited to: selling the extension, bundling it in a paid product, offering it as part of a paid service, or monetizing it through ads or subscriptions.
-
-To obtain a commercial license, contact:
-📧 [overduebookmarks@gmail.com](mailto:overduebookmarks@gmail.com)
-
-See [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md) for full terms.
 </body>
 </html>
